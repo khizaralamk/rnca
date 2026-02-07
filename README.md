@@ -1,8 +1,8 @@
-# rnca
+# krnca
 
-🏗️ **Instantly create a complete, production-ready React Native app with Clean Architecture**
+🏗️ **Setup your React Native projects with clean architecture with the help of CLI and this package**
 
-Transform your empty React Native project into a fully functional app with navigation, sample screens, and clean architecture patterns - all in under a minute!
+Create a complete, production-ready React Native app with clean architecture, navigation, sample screens, and best practices - all in under a minute!
 
 ## ✨ Features
 
@@ -21,25 +21,51 @@ Transform your empty React Native project into a fully functional app with navig
 ### Prerequisites
 
 - Node.js >= 14.0.0
-- A React Native project created with `npx react-native init MyApp`
 
 ### Usage
 
-Navigate to your React Native project directory and run:
+#### Option 1: Create a New React Native Project with Clean Architecture (Recommended)
+
+Simply run:
 
 ```bash
-npx rnca
+npx krnca
 ```
+
+The CLI will:
+1. Ask for your app name
+2. Create a new React Native project
+3. Setup clean architecture structure automatically
 
 Or install globally:
 
 ```bash
-npm install -g rnca
-rnca
+npm install -g krnca
+krnca
+```
+
+#### Option 2: Add Clean Architecture to Existing Project
+
+Navigate to your existing React Native project directory and run:
+
+```bash
+npx krnca
 ```
 
 ### What Happens Next?
 
+**For New Projects:**
+1. ✅ Asks for your app name
+2. ✅ Creates a new React Native project
+3. ✅ Sets up complete clean architecture structure
+4. ✅ Generates 4 working screens with navigation
+5. ✅ Sets up hooks, styles, and constants
+6. ✅ Updates your App.tsx
+7. ✅ Checks and installs navigation dependencies
+8. ✅ Copies architecture documentation
+9. 🎉 **Your app is ready to run!**
+
+**For Existing Projects:**
 1. ✅ Validates your React Native project
 2. ✅ Creates complete directory structure
 3. ✅ Generates 4 working screens with navigation
@@ -309,8 +335,24 @@ After running the tool:
 
 ## 🎯 CLI Output Example
 
+### Creating a New Project
+
 ```
-🏗️  React Native Clean Architecture Scaffold
+🏗️  React Native Clean Architecture Setup
+
+📱 No React Native project detected in current directory.
+
+? Would you like to create a new React Native project? Yes
+? Enter your app name: MyAwesomeApp
+
+🚀 Creating React Native project: MyAwesomeApp...
+This may take a few minutes...
+
+[React Native CLI output...]
+
+✅ React Native project "MyAwesomeApp" created successfully!
+
+📦 Now setting up clean architecture structure...
 
 ? This will create a complete React Native app with navigation and sample screens. Continue? Yes
 

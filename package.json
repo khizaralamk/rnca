@@ -1,10 +1,10 @@
 {
-  "name": "rnca",
+  "name": "krnca",
   "version": "1.0.0",
-  "description": "Scaffold a clean architecture structure for React Native projects",
+  "description": "Setup your React Native projects with clean architecture with the help of CLI and this package",
   "main": "src/index.js",
   "bin": {
-    "rnca": "bin/cli.js"
+    "krnca": "bin/cli.js"
   },
   "keywords": [
     "react-native",

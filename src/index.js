@@ -2,19 +2,73 @@ const fs = require('fs-extra');
 const path = require('path');
 const chalk = require('chalk');
 const inquirer = require('inquirer');
+const { execSync } = require('child_process');
 const { createDirectories } = require('./createDirectories');
 const { generateFiles } = require('./generateFiles');
 const { checkAndInstallDependencies } = require('./checkDependencies');
 
 async function scaffold() {
-  console.log(chalk.blue.bold('\n🏗️  React Native Clean Architecture Scaffold\n'));
+  console.log(chalk.blue.bold('\n🏗️  React Native Clean Architecture Setup\n'));
 
   // Check if in a project directory (has package.json)
   const packageJsonPath = path.join(process.cwd(), 'package.json');
+  let projectPath = process.cwd();
+
   if (!fs.existsSync(packageJsonPath)) {
-    console.log(chalk.yellow('⚠️  No package.json found in current directory.'));
-    console.log(chalk.gray('   This tool is typically used in a React Native project,'));
-    console.log(chalk.gray('   but will continue anyway.\n'));
+    console.log(chalk.cyan('📱 No React Native project detected in current directory.\n'));
+
+    const { createNew } = await inquirer.prompt([
+      {
+        type: 'confirm',
+        name: 'createNew',
+        message: 'Would you like to create a new React Native project?',
+        default: true,
+      },
+    ]);
+
+    if (createNew) {
+      const { appName } = await inquirer.prompt([
+        {
+          type: 'input',
+          name: 'appName',
+          message: 'Enter your app name:',
+          default: 'MyApp',
+          validate: (input) => {
+            if (!input || input.trim().length === 0) {
+              return 'App name cannot be empty';
+            }
+            if (!/^[a-zA-Z][a-zA-Z0-9]*$/.test(input)) {
+              return 'App name must start with a letter and contain only letters and numbers';
+            }
+            return true;
+          },
+        },
+      ]);
+
+      console.log(chalk.cyan(`\n🚀 Creating React Native project: ${appName}...\n`));
+      console.log(chalk.gray('This may take a few minutes...\n'));
+
+      try {
+        execSync(`npx @react-native-community/cli@latest init ${appName}`, {
+          stdio: 'inherit',
+          cwd: process.cwd(),
+        });
+
+        projectPath = path.join(process.cwd(), appName);
+        process.chdir(projectPath);
+
+        console.log(chalk.green(`\n✅ React Native project "${appName}" created successfully!\n`));
+        console.log(chalk.cyan('📦 Now setting up clean architecture structure...\n'));
+      } catch (error) {
+        console.log(chalk.red('\n❌ Error creating React Native project:'), error.message);
+        process.exit(1);
+      }
+    } else {
+      console.log(chalk.yellow('⚠️  No package.json found and chose not to create new project.'));
+      console.log(chalk.gray('   Please run this command in a React Native project directory,'));
+      console.log(chalk.gray('   or choose to create a new project.\n'));
+      process.exit(0);
+    }
   } else {
     // Check if it's a React Native or Expo project
     const packageJson = await fs.readJson(packageJsonPath);
