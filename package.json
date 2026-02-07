@@ -1,0 +1,34 @@
+{
+  "name": "rnca",
+  "version": "1.0.0",
+  "description": "Scaffold a clean architecture structure for React Native projects",
+  "main": "src/index.js",
+  "bin": {
+    "rnca": "bin/cli.js"
+  },
+  "keywords": [
+    "react-native",
+    "clean-architecture",
+    "scaffold",
+    "cli",
+    "boilerplate",
+    "template",
+    "generator"
+  ],
+  "author": "Khizar <khizaralam20@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "fs-extra": "^11.1.1",
+    "inquirer": "^8.2.5"
+  },
+  "files": [
+    "bin",
+    "src",
+    "templates",
+    "README.md"
+  ]
+}

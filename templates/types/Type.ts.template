@@ -1,0 +1,15 @@
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
+export type Navigation = NativeStackNavigationProp<STACK_NAVIGATOR_PARAMS>;
+
+export type STACK_NAVIGATOR_PARAMS = {
+  Splash: undefined;
+  Home: undefined;
+  BottomTab: undefined;
+};
+
+export type BOTTOM_TAB_NAVIGATOR_PARAMS = {
+  Home: undefined;
+  Profile: undefined;
+  Settings: undefined;
+};
