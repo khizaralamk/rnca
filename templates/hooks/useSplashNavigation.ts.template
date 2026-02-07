@@ -1,0 +1,16 @@
+import { useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { Navigation } from '../../types/Type';
+import { SPLASH_DURATION } from '../../constants/splash/splash.constants';
+
+export const useSplashNavigation = () => {
+  const navigation = useNavigation<Navigation>();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigation.navigate('BottomTab');
+    }, SPLASH_DURATION);
+
+    return () => clearTimeout(timer);
+  }, [navigation]);
+};

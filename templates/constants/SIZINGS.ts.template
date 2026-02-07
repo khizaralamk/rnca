@@ -1,0 +1,51 @@
+export const SIZINGS = {
+  borderSizings: {
+    extra_small: 1,
+    small: 2,
+    medium: 3,
+    large_1: 4,
+    large_2: 5,
+    large_3: 6,
+    large_4: 7,
+    large_5: 8,
+    large_6: 9,
+    large_7: 10,
+    large_8: 11,
+    large_9: 12,
+    large_10: 13,
+  },
+
+  fontSizings: {
+    extra_small: 12,
+    small: 14,
+    medium: 16,
+    large: 18,
+    large_1: 19,
+    large_2: 20,
+    large_3: 21,
+    large_4: 22,
+    large_5: 23,
+    large_6: 24,
+    large_7: 25,
+    large_8: 26,
+    large_9: 27,
+    large_10: 28,
+  },
+
+  spacing: {
+    xs: 4,
+    sm: 8,
+    md: 16,
+    lg: 24,
+    xl: 32,
+    xxl: 48,
+  },
+
+  borderRadius: {
+    sm: 4,
+    md: 8,
+    lg: 12,
+    xl: 16,
+    full: 9999,
+  },
+};
